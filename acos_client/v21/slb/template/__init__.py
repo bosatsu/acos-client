@@ -18,6 +18,9 @@ from acos_client.v21.slb.template.persistence import CookiePersistence
 from acos_client.v21.slb.template.persistence import SourceIpPersistence
 from acos_client.v21.slb.template.template_ssl import ClientSSL
 from acos_client.v21.slb.template.template_ssl import ServerSSL
+from acos_client.v21.slb.template.tcp import TCP
+from acos_client.v21.slb.template.udp import UDP
+from acos_client.v21.slb.template.virtual_server import VIP
 
 
 class Template(base.BaseV21):
@@ -37,3 +40,15 @@ class Template(base.BaseV21):
     @property
     def src_ip_persistence(self):
         return SourceIpPersistence(self.client)
+
+    @property
+    def tcp(self):
+        return TCP(self.client)
+
+    @property
+    def udp(self):
+        return UDP(self.client)
+
+    @property
+    def vip(self):
+        return VIP(self.client)
